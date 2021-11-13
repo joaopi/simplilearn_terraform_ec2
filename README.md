@@ -1,10 +1,10 @@
 # Simplilearn Terraform EC2 Project
-This is an example Terraform configuration intended for the Simplilearn project: Automating Infrastructure using Terraform
+This is a Terraform configuration to implement the Simplilearn project: Automating Infrastructure using Terraform
 
 
 ## What will this do?
 
-This is a Terraform configuration that will create an EC2 instance in your AWS account, connect to the instance and install Jenkins, Java, and Python in the instance
+This is a Terraform configuration that will create an EC2 instance in your AWS account, create security keys for SSH, connect to the instance and install Jenkins, Java, and Python in the instance
 
 ## What are the prerequisites?
 
