@@ -29,6 +29,6 @@ variable "ingress_port_rules" {
 }
 
 variable "key_name" {
-  description = "Key pair name name"
+  description = "Key pair name"
   default     = "my_key_pair"
 }
