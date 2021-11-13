@@ -10,10 +10,14 @@ resource "tls_private_key" "this" {
 module "key_pair" {
   source = "terraform-aws-modules/key-pair/aws"
 
+  create_key_pair = var.create_key_pair
+
   key_name   = var.key_name
   public_key = tls_private_key.this.public_key_openssh
 
-  create_key_pair = var.create_key_pair
+  provisioner "local-exec" { # Create a private key ".pem" to your computer
+    command = "echo '${tls_private_key.pk.private_key_pem}' > ./${var.key_name}.pem"
+  }
   
   tags = {
     "Terraform" = "true"
