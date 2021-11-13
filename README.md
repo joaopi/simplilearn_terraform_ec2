@@ -45,7 +45,6 @@ Note that this example may create resources which cost money. Run `terraform des
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_key_pair"></a> [key\_pair](#module\_key\_pair) | "terraform-aws-modules/key-pair/aws" |  |
-| <a name="module_key_pair_external"></a> [key\_pair\_external](#module\_key\_pair\_external) "terraform-aws-modules/key-pair/aws" |  |
 
 ## Resources
 
