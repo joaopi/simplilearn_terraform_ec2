@@ -12,3 +12,14 @@ variable "instance_name" {
   description = "EC2 instance name"
   default     = "jenkins"
 }
+
+variable "ssh_user_name" {
+  description = "SSH user name"
+  default     = "ubuntu"
+}
+
+variable "ssh_private_key_file" {
+  description = "SSH private key file"
+  default     = "~/pvkey.pem"
+}
+
