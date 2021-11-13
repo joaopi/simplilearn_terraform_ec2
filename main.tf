@@ -49,6 +49,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "jenkins" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
+  security_groups = [aws_security_group.allow_traffic.name]
 
   provisioner "remote-exec" {
     # install Java, Python, Jenkins, and configure port forwarding from port 80 to 8080 to access Jenkins publicly
