@@ -24,6 +24,7 @@ resource "aws_instance" "jenkins" {
   instance_type = var.instance_type
 
   provisioner "remote-exec" {
+    # install Java, Python, Jenkins, and configure port forwarding from port 80 to 8080 to access Jenkins publicly
     inline = [
       "wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -",
       "sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
