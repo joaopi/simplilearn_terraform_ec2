@@ -29,6 +29,7 @@ resource "aws_instance" "jenkins" {
       "sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
       "sudo apt update -qq",
       "sudo apt install -y openjdk-11-jdk",
+      "sudo apt install -y python",
       "sudo apt install -y jenkins",
       "sudo systemctl start jenkins",
       "sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
