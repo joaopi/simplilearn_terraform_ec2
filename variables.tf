@@ -23,3 +23,7 @@ variable "ssh_private_key_file" {
   default     = "~/pvkey.pem"
 }
 
+variable "ingress_port_rules" {
+  type    = list(number)
+  default = [80, 443, 22]
+}
