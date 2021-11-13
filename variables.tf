@@ -20,10 +20,15 @@ variable "ssh_user_name" {
 
 variable "ssh_private_key_file" {
   description = "SSH private key file"
-  default     = "~/pvkey.pem"
+  default     = "~/my_key_pair.pem"
 }
 
 variable "ingress_port_rules" {
   type    = list(number)
   default = [80, 443, 22]
+}
+
+variable "key_name" {
+  description = "Key pair name name"
+  default     = "my_key_pair"
 }
