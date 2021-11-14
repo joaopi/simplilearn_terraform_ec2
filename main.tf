@@ -8,13 +8,14 @@ resource "tls_private_key" "this" {
 }
 
 resource "aws_key_pair" "generated_key" {
-  count = var.create_key_pair ? 1 : 0
+  # uncomment below to have conditional creation of the aws key pairs
+  # count = var.create_key_pair ? 1 : 0
   key_name   = var.key_name
   public_key = tls_private_key.this.public_key_openssh
 
-  # provisioner "local-exec" { # Create a private key ".pem" to your computer
-  #  command = "echo '${tls_private_key.this.private_key_pem}' > ${var.ssh_private_key_file}"
-  #}
+  provisioner "local-exec" { # Create a private key ".pem" to your computer
+    command = "echo '${tls_private_key.this.private_key_pem}' > ${var.ssh_private_key_file}"
+  }
   
   tags = {
     "Terraform" = "true"
@@ -78,7 +79,7 @@ resource "aws_instance" "jenkins" {
       "sudo apt update -qq",
       "sudo apt install -y openjdk-11-jre",
       "sudo apt install -y python3.8",
-      "F",
+      "sudo apt install jenkins",
       "sudo systemctl start jenkins",
       "sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
       "sudo sh -c \"iptables-save > /etc/iptables.rules\"",
