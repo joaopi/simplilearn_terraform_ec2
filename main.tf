@@ -24,8 +24,8 @@ module "key_pair" {
   }
 }
 
-resource "aws_security_group" "allow_traffic" {
-  name        = "Allow http and ssh traffic"
+resource "aws_security_group" "jenkins_sg" {
+  name        = "jenkins_sg"
   description = "Allow ssh and standard http/https ports inbound and everything outbound"
 
   dynamic "ingress" {
@@ -70,7 +70,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "jenkins" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  security_groups = [aws_security_group.allow_traffic.name]
+  security_groups = [aws_security_group.jenkins_sg]
   key_name = var.key_name
   
   provisioner "remote-exec" {
