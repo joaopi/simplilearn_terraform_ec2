@@ -32,3 +32,9 @@ variable "key_name" {
   description = "Key pair name"
   default     = "my_key_pair"
 }
+
+variable "create_key_pair" {
+  description = "Create key pair conditionally"
+  type        = bool
+  default     = true
+}

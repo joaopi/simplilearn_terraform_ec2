@@ -3,13 +3,31 @@ provider "aws" {
   region = var.region
 }
 
-resource "aws_security_group" "allow_traffic" {
-  name        = "Allow http and ssh traffic"
+resource "tls_private_key" "this" {
+  algorithm = "RSA"
+}
+
+resource "aws_key_pair" "generated_key" {
+  count = var.create_key_pair ? 1 : 0
+  key_name   = var.key_name
+  public_key = tls_private_key.this.public_key_openssh
+
+  provisioner "local-exec" { # Create a private key ".pem" to your computer
+    command = "echo '${tls_private_key.this.private_key_pem}' > ./${var.key_name}.pem"
+  }
+  
+  tags = {
+    "Terraform" = "true"
+  }
+}
+
+resource "aws_security_group" "jenkins_sg" {
+  name        = "jenkins_sg"
   description = "Allow ssh and standard http/https ports inbound and everything outbound"
 
   dynamic "ingress" {
     iterator = port
-    for_each = var.ingressrules
+    for_each = var.ingress_port_rules
     content {
       from_port   = port.value
       to_port     = port.value
@@ -49,7 +67,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "jenkins" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  security_groups = [aws_security_group.allow_traffic.name]
+  security_groups = [aws_security_group.jenkins_sg.name]
   key_name = var.key_name
   
   provisioner "remote-exec" {
