@@ -79,7 +79,7 @@ resource "aws_instance" "jenkins" {
       "sudo apt update -qq",
       "sudo apt install -y openjdk-11-jre",
       "sudo apt install -y python3.8",
-      "sudo apt install jenkins",
+      "sudo apt install -y jenkins",
       "sudo systemctl start jenkins",
       "sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080",
       "sudo sh -c \"iptables-save > /etc/iptables.rules\"",
