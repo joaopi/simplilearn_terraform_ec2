@@ -8,9 +8,9 @@ This is a Terraform configuration that will create an EC2 instance in your AWS a
 
 ## What are the prerequisites?
 
-You must have an AWS account and provide your AWS Access Key ID and AWS Secret Access Key. 
+You must have an AWS account and provide your AWS Access Key ID, AWS Secret Access Key and AWS Security Token.
 
-The values for `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` should be saved as environment variables.
+The values for `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_SESSION_TOKEN` should be saved as environment variables.
 
 ## Usage
 
@@ -40,18 +40,11 @@ Note that this example may create resources which cost money. Run `terraform des
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.1 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | >= 3.1 |
 
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_key_pair"></a> [key\_pair](#module\_key\_pair) | "terraform-aws-modules/key-pair/aws" |  |
-
 ## Resources
 
 | Name | Type |
 |------|------|
-| [random_pet.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
-| [tls_private_key.this](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
+| [tls_private_key.generated_key](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
 
 ## Inputs
 
