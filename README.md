@@ -8,6 +8,6 @@ This is a Terraform configuration that will create an EC2 instance in your AWS a
 
 ## What are the prerequisites?
 
-You must have an AWS account and provide your AWS Access Key ID and AWS Secret Access Key. 
+You must have an AWS account and provide your AWS Access Key ID, AWS Secret Access Key and AWS Security Token.
 
-The values for `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` should be saved as environment variables.
+The values for `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` and `AWS_SESSION_TOKEN` should be saved as environment variables.
