@@ -77,6 +77,8 @@ resource "aws_instance" "jenkins" {
       "wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -",
       "sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
       "sudo apt update",
+      "sudo apt install -y software-properties-common",
+      "sudo add-apt-repository universe",
       "sudo apt install -y default-jdk",
       "sudo apt install -y python3.8",
       "sudo apt install -y jenkins",
