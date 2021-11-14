@@ -67,7 +67,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "jenkins" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
-  security_groups = [aws_security_group.jenkins_sg]
+  security_groups = [aws_security_group.jenkins_sg.name]
   key_name = var.key_name
   
   provisioner "remote-exec" {
