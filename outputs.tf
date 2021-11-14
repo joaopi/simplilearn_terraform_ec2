@@ -26,5 +26,5 @@ output "key_pair_key_pair_id" {
 
 output "key_pair_fingerprint" {
   description = "The MD5 public key fingerprint."
-  value       = aws_key_pair.generated_key.key_pair_fingerprint
+  value       = aws_key_pair.generated_key.fingerprint
 }
