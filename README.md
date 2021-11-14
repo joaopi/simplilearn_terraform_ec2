@@ -6,9 +6,9 @@ This is a Terraform configuration to implement the Simplilearn project: Automati
 
 This is a Terraform configuration that will create an EC2 instance in your AWS account, create security keys for SSH, connect to the instance and install Jenkins, Java, and Python in the instance.
 
-It installs Java JDK from APT package ´default-jdk´, and installs Python8.
+It installs Java JDK from APT package `default-jdk`, and installs Python8.
 
-Jenkins server will be available on http://<EC2-public-ip>:8080
+Jenkins server will be available on http://&lt;EC2-public-ip&gt;:8080
 
 ## What are the prerequisites?
 
