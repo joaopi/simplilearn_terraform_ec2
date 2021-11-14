@@ -8,17 +8,23 @@ output "instance_arn" {
   value = aws_instance.jenkins.arn
 }
 
-#output "key_pair_key_name" {
-#  description = "The key pair name."
-#  value       = aws_key_pair.generated_key[count.index].key_name
-#}
+output "instance_jenkins_url" {
+  description = "The Jenkins URL."
+  value = "http://${aws_instance.jenkins.public_dns}:8080"
+}
 
-#output "key_pair_key_pair_id" {
-#  description = "The key pair ID."
-#  value       = aws_key_pair.generated_key[count.index].pair_id
-#}
 
-#output "key_pair_fingerprint" {
-#  description = "The MD5 public key fingerprint."
-#  value       = aws_key_pair.generated_key[count.index].key_pair_fingerprint
-#}
+output "key_pair_key_name" {
+  description = "The key pair name."
+  value       = aws_key_pair.generated_key.key_name
+}
+
+output "key_pair_key_pair_id" {
+  description = "The key pair ID."
+  value       = aws_key_pair.generated_key.pair_id
+}
+
+output "key_pair_fingerprint" {
+  description = "The MD5 public key fingerprint."
+  value       = aws_key_pair.generated_key.key_pair_fingerprint
+}
