@@ -33,8 +33,9 @@ variable "key_name" {
   default     = "my_key_pair"
 }
 
-variable "create_key_pair" {
-  description = "Create key pair conditionally"
-  type        = bool
-  default     = true
-}
+# uncomment below to have conditional creation of the aws key pairs
+# variable "create_key_pair" {
+#  description = "Create key pair conditionally"
+#  type        = bool
+#  default     = true
+#}
