@@ -12,9 +12,9 @@ resource "aws_key_pair" "generated_key" {
   key_name   = var.key_name
   public_key = tls_private_key.this.public_key_openssh
 
-  provisioner "local-exec" { # Create a private key ".pem" to your computer
-    command = "echo '${tls_private_key.this.private_key_pem}' > ./${var.key_name}.pem"
-  }
+  # provisioner "local-exec" { # Create a private key ".pem" to your computer
+  #  command = "echo '${tls_private_key.this.private_key_pem}' > ${var.ssh_private_key_file}"
+  #}
   
   tags = {
     "Terraform" = "true"
@@ -93,7 +93,8 @@ resource "aws_instance" "jenkins" {
     type        = "ssh"
     host        = self.public_ip
     user        = var.ssh_user_name
-    private_key = file(var.ssh_private_key_file)
+    # private_key = file(var.ssh_private_key_file)
+    private_key = tls_private_key.this.private_key_pem
   }
   
   tags = {
