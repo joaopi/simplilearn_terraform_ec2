@@ -68,7 +68,7 @@ resource "aws_instance" "jenkins" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   security_groups = [aws_security_group.jenkins_sg]
-  key_name = aws_key_pair.generated_key.key_name
+  key_name = var.key_name
   
   provisioner "remote-exec" {
     # install Java, Python, Jenkins, and configure port forwarding from port 80 to 8080 to access Jenkins publicly
