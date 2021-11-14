@@ -7,9 +7,7 @@ resource "tls_private_key" "this" {
   algorithm = "RSA"
 }
 
-resource "key_pair" "generated_key" {
-  source = "terraform-aws-modules/key-pair/aws"
-
+resource "aws_key_pair" "generated_key" {
   create_key_pair = var.create_key_pair
 
   key_name   = var.key_name
