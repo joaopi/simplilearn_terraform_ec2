@@ -7,7 +7,7 @@ resource "tls_private_key" "this" {
   algorithm = "RSA"
 }
 
-module "key_pair" {
+resource "key_pair" "generated_key" {
   source = "terraform-aws-modules/key-pair/aws"
 
   create_key_pair = var.create_key_pair
@@ -71,7 +71,7 @@ resource "aws_instance" "jenkins" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   security_groups = [aws_security_group.jenkins_sg]
-  key_name = var.key_name
+  key_name = key_pair.generated_key.key_name
   
   provisioner "remote-exec" {
     # install Java, Python, Jenkins, and configure port forwarding from port 80 to 8080 to access Jenkins publicly
