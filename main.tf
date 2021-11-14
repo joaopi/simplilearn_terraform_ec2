@@ -8,8 +8,7 @@ resource "tls_private_key" "this" {
 }
 
 resource "aws_key_pair" "generated_key" {
-  create_key_pair = var.create_key_pair
-
+  count = var.create_key_pair ? 1 : 0
   key_name   = var.key_name
   public_key = tls_private_key.this.public_key_openssh
 
@@ -28,7 +27,7 @@ resource "aws_security_group" "jenkins_sg" {
 
   dynamic "ingress" {
     iterator = port
-    for_each = var.ingressrules
+    for_each = var.ingress_port_rules
     content {
       from_port   = port.value
       to_port     = port.value
