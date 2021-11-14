@@ -21,7 +21,7 @@ output "key_pair_key_name" {
 
 output "key_pair_key_pair_id" {
   description = "The key pair ID."
-  value       = aws_key_pair.generated_key.pair_id
+  value       = aws_key_pair.generated_key.key_pair_id
 }
 
 output "key_pair_fingerprint" {
