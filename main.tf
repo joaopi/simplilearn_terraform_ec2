@@ -74,6 +74,8 @@ resource "aws_instance" "jenkins" {
   provisioner "remote-exec" {
     # install Java, Python, Jenkins, and configure port forwarding from port 80 to 8080 to access Jenkins publicly
     inline = [
+      # avoids apt install failure issues related with this problem: https://github.com/hashicorp/terraform-provider-aws/issues/29
+      "/usr/bin/cloud-init status --wait",
       "wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -",
       "sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'",
       "sudo apt update",
