@@ -8,7 +8,7 @@ This is a Terraform configuration that will create an EC2 instance in your AWS a
 
 It installs Java JDK from APT package `default-jdk`, and installs Python8.
 
-Jenkins server will be available on `http://&lt;EC2-public-ip&gt;:8080`
+Jenkins server will be available on `http://<EC2-public-ip>:8080`
 
 ## What are the prerequisites?
 
