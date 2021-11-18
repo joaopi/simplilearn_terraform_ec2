@@ -25,7 +25,7 @@ variable "ssh_private_key_file" {
 
 variable "ingress_port_rules" {
   type    = list(number)
-  default = [80, 443, 22]
+  default = [8080, 443, 22]
 }
 
 variable "key_name" {
